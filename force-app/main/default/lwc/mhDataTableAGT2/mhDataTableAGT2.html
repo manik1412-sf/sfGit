@@ -1,0 +1,89 @@
+<template>
+    <template if:true={showAccountTable}>
+        <lightning-datatable key-field="Id" data={formattedAcountData} columns={ACCCOLUMNS} hide-checkbox-column>
+        </lightning-datatable>
+    </template>
+    <template if:true={showCaseTable}>
+        <lightning-datatable key-field="id" data={formattedCaseData} columns={CASECOLUMNS} max-row-selection="1"
+            onrowselection={handlerowSelection}>
+        </lightning-datatable>
+        <div class="slds-grid slds-align_absolute-center slds-m-top_x-small">
+            <lightning-button-icon class="slds-m-right_x-small" icon-name="utility:left" variant="border-filled"
+                onclick={handlePrevious} disabled={isOnFirstPage}></lightning-button-icon>
+            <lightning-button-icon icon-name="utility:right" variant="border-filled" onclick={handleNext}
+                disabled={isOnLastPage}></lightning-button-icon>
+        </div>
+    </template>
+
+    <template if:true={showCaseClaimTable}>
+        <div class="slds-text-color_error slds-p-around_small">{displayLabel.reviewDuplicateCaseClaims}</div>
+        <lightning-datatable key-field="id" data={formattedCaseClaimData} columns={CASECLAIMCOLUMNS}
+            max-row-selection="1" onrowselection={handlerowSelection}>
+        </lightning-datatable>
+    </template>
+    <template if:true={showCaseClaimTableOnAttachScreen}>     
+        <div class="slds-text-color_error slds-p-around_small">{displayLabel.reviewDuplicateCaseClaims}</div>   
+        <lightning-datatable key-field="id" data={formattedCaseClaimData} columns={CASECLAIMCOLUMNS}
+         hide-checkbox-column="true">
+        </lightning-datatable>
+        <template if:false={noRecordFound}>
+        <div class="slds-grid slds-align_absolute-center slds-m-top_x-small">
+            <lightning-button-icon class="slds-m-right_x-small" icon-name="utility:left" variant="border-filled"
+                onclick={handlePrevious} disabled={isOnFirstPage}></lightning-button-icon>
+            <lightning-button-icon icon-name="utility:right" variant="border-filled" onclick={handleNext}
+                disabled={isOnLastPage}></lightning-button-icon>      
+        </div>
+        </template>
+        <template if:true={noRecordFound}><br><center>No Record Found</center></template>
+    </template>
+    <template if:true={showTriageCaseTable}>
+        <lightning-datatable key-field="id" data={formattedTriageQueueData} columns={TRIAGEQUEUECASE}
+         hide-checkbox-column="true">
+        </lightning-datatable>
+        <template if:false={noRecordFound}>
+        <div class="slds-grid slds-align_absolute-center slds-m-top_x-small">
+            <lightning-button-icon class="slds-m-right_x-small" icon-name="utility:left" variant="border-filled"
+                onclick={handlePrevious} disabled={isOnFirstPage}></lightning-button-icon>
+            <lightning-button-icon icon-name="utility:right" variant="border-filled" onclick={handleNext}
+                disabled={isOnLastPage}></lightning-button-icon>
+        </div>
+    </template>
+        <template if:true={noRecordFound}><br><center>No Record Found</center></template>
+    </template>
+    <br>
+    <template if:true={showCaseWithCampaignTable}>
+        <lightning-datatable key-field="id" data={formattedAllCaseWithCampaignData} columns={CASECAMPAIGNCOLUMNS}
+            max-row-selection="1" onrowselection={handlerowSelection}>
+        </lightning-datatable>
+        <div class="slds-grid slds-align_absolute-center slds-m-top_x-small">
+            <lightning-button-icon class="slds-m-right_x-small" icon-name="utility:left" variant="border-filled"
+                onclick={handlePreviousCamp} disabled={isOnFirstPageCamp}></lightning-button-icon>
+            <lightning-button-icon icon-name="utility:right" variant="border-filled" onclick={handleNextCamp}
+                disabled={isOnLastPageCamp}></lightning-button-icon>
+        </div>
+    </template>
+
+    <template if:true={showHouseholdCampaignCases}>
+        <lightning-datatable key-field="id" data={formattedHouseholdCampaignCases} columns={HOUSEHOLDCASECAMPAIGNCOLUMNS}
+            max-row-selection="1" onrowselection={handlerowSelection}>
+        </lightning-datatable>
+        <div class="slds-grid slds-align_absolute-center slds-m-top_x-small">
+            <lightning-button-icon class="slds-m-right_x-small" icon-name="utility:left" variant="border-filled"
+                onclick={handlePreviousCamp} disabled={isOnFirstPageCamp}></lightning-button-icon>
+            <lightning-button-icon icon-name="utility:right" variant="border-filled" onclick={handleNextCamp}
+                disabled={isOnLastPageCamp}></lightning-button-icon>
+        </div>
+    </template>
+
+    <template if:true={showProvCaseTable}>
+        <lightning-datatable key-field="id" data={formattedProvCaseData} columns={PROVCASECOLUMNS} max-row-selection="1"
+            onrowselection={handlerowSelection}>
+        </lightning-datatable>
+        <div class="slds-grid slds-align_absolute-center slds-m-top_x-small">
+            <lightning-button-icon class="slds-m-right_x-small" icon-name="utility:left" variant="border-filled"
+                onclick={handlePrevious} disabled={isOnFirstPage}></lightning-button-icon>
+            <lightning-button-icon icon-name="utility:right" variant="border-filled" onclick={handleNext}
+                disabled={isOnLastPage}></lightning-button-icon>
+        </div>
+    </template>
+</template>
