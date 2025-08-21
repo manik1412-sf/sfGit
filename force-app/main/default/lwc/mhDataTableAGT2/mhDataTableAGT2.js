@@ -1,5 +1,5 @@
 /*****************************************************************************
- Name: MhDataTableAGTZZZZZ
+ Name: MhDataTableAGTEEEEE
 ================================================================================
 Purpose:
 This component is used to verify members in Hipaa flow for agent 2.0 UI
